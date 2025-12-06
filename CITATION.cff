@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+type: software
+title: Global-to-Local Fourier Neural Operator for Fast Wave-Structure Load Prediction
+subtitle: With Physics Regularization and Extreme-Event Awareness
+
+authors:
+  - family-names: "[Your Name]"
+    given-names: "[First]"
+    orcid: "https://orcid.org/[Your ORCID]"
+
+license: MIT
+repository-code: https://github.com/hasanmahin770-ctrl/global-local-fno-wave-loads
+date-released: 2025-12-06
+keywords:
+  - Fourier Neural Operators
+  - Wave-Structure Interaction
+  - Physics-Informed Machine Learning
+  - Directional Wave Spectra
+  - Marine Engineering
+  - Deep Learning
+  - Uncertainty Quantification
+
+references:
+  - type: dataset
+    title: Copernicus Marine Global Multi-Year Wave Reanalysis
+    authors:
+      - family-names: Copernicus
+        name-particle: ""
+        given-names: Marine
+    url: https://data.marine.copernicus.eu/
+    year: 2024
+    license: CC-BY-4.0
+    
+  - type: dataset
+    title: EMEC Billia Croo Buoy Data
+    authors:
+      - family-names: EMEC
+        name-particle: ""
+        given-names: European Marine Energy Centre
+    url: https://www.emec.org.uk/
+    year: 2024
+    
+  - type: software
+    title: Fourier Neural Operator for Parametric Partial Differential Equations
+    authors:
+      - family-names: Li
+        given-names: Zongyi
+      - family-names: Kovachki
+        given-names: Nikola
+      - family-names: Azizzadenesheli
+        given-names: Kamyar
+      - family-names: Liu
+        given-names: Burigede
+      - family-names: Bhattacharya
+        given-names: Kaushik
+      - family-names: Stuart
+        given-names: Andrew
+      - family-names: Anandkumar
+        given-names: Anima
+    year: 2021
+    journal: ICLR 2021

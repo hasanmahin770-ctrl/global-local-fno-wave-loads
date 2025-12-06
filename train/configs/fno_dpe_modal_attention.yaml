@@ -1,0 +1,82 @@
+# FNO with DPE and Modal Attention Configuration
+
+# Model architecture
+model:
+  type: fno_dpe_modal_attention
+  modes: [16, 16]  # (freq_modes, dir_modes)
+  width: 96
+  depth: 4
+  input_channels: 1
+  output_channels: 1
+  dpe_dim: 8
+  use_modal_attention: true
+  activation: gelu
+
+# Training: Pretraining
+pretrain:
+  epochs: 80
+  batch_size: 16
+  lr: 1.0e-3
+  optimizer: adamw
+  weight_decay: 1.0e-4
+  
+  # Physics-regularized loss
+  loss:
+    lambda_energy: 0.1
+    lambda_momentum: 0.05
+    lambda_reg: 1.0e-4
+    alpha_tail: 1.5
+    percentile_tail: 90
+  
+  # Scheduler
+  scheduler: cosine
+  warmup_epochs: 5
+  
+  # Data
+  data_dir: data/synthetic/pretraining/
+  num_workers: 4
+  
+  # Logging
+  log_frequency: 100
+  checkpoint_dir: checkpoints/pretrain/
+  use_wandb: true
+
+# Training: Fine-tuning
+finetune:
+  epochs: 40
+  batch_size: 8
+  lr: 1.0e-4
+  optimizer: adamw
+  weight_decay: 1.0e-4
+  
+  # Physics loss (same as pretrain)
+  loss:
+    lambda_energy: 0.1
+    lambda_momentum: 0.05
+    lambda_reg: 1.0e-4
+    alpha_tail: 1.5
+    percentile_tail: 90
+  
+  # Data split
+  train_split: 0.85
+  val_split: 0.15
+  temporal_holdout: true  # Last 3 months for validation
+  
+  # Early stopping
+  early_stopping: true
+  patience: 10
+  
+  # Logging
+  log_frequency: 50
+  checkpoint_dir: checkpoints/finetune/
+  use_wandb: true
+
+# Evaluation
+eval:
+  batch_size: 32
+  metrics: [rmse, nrmse, mae, peak_error, crps]
+  plot_results: true
+  output_dir: results/evaluation/
+
+# Seeds for reproducibility
+seeds: [0, 1, 2, 3, 4]
