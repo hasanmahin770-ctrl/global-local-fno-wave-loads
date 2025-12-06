@@ -1,0 +1,39 @@
+# Data
+data/raw/
+data/processed/
+*.nc
+*.npz
+
+# Checkpoints
+checkpoints/
+results/
+
+# Outputs
+notebooks/outputs/
+manuscript/*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logging
+*.log
+wandb/
+lightning_logs/
